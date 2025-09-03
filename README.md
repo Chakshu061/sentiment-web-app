@@ -1,24 +1,35 @@
-# Sentiment Analysis Dashboard
+# Financial Sentiment Dashboard — FinBERT
 
-📊 A web application built with Streamlit that performs sentiment analysis on multiple texts, visualizes sentiment distribution, and provides detailed statistics.
+📈 A web application built with Streamlit that analyzes financial news headlines for sentiment using the FinBERT model. The app provides insights into sentiment trends, distributions, and rolling averages for financial data.
 
 ## Features
 
-- Analyze sentiment for multiple sentences at once.
-- View sentiment results in a tabular format.
-- Visualize sentiment distribution using pie and bar charts.
-- Display average confidence scores for each sentiment.
+- **Sentiment Analysis**: Analyze financial news headlines for positive, neutral, or negative sentiment.
+- **Live News Fetching**: Fetch live news headlines from NewsAPI.org based on a query.
+- **Sentiment Visualization**:
+  - Sentiment distribution (positive, neutral, negative).
+  - Rolling sentiment trends over time.
+- **Word Cloud**: Generate a word cloud from analyzed headlines.
+- **Customizable Settings**:
+  - Choose rolling window size for sentiment analysis.
+  - Set alert thresholds for rolling sentiment.
+- **Modes**:
+  - **Demo**: Analyze preloaded sample financial headlines.
+  - **Live**: Fetch and analyze live news headlines using NewsAPI.
+  - **Manual**: Paste custom headlines for analysis.
 
 ## Demo
 
-![Dashboard Screenshot](https://via.placeholder.com/800x400?text=Sentiment+Analysis+Dashboard)
+![Dashboard finance](<Screenshot 2025-09-03 at 10.08.36 PM.png>)
+![alt text](<Screenshot 2025-09-03 at 10.15.46 PM.png>)
+![alt text](image.png)
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/sentiment-web-app.git
+   git clone https://github.com/Chakshu061/sentiment-web-app.git
    cd sentiment-web-app
    ```
 
@@ -41,30 +52,36 @@
 ```
 sentiment-web-app/
 ├── app.py                  # Main Streamlit app
-├── sentiment_analysis.py   # Standalone sentiment analysis script
-└── requirements.txt        # Python dependencies
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 ```
 
 ## Usage
 
-### Sentiment Analysis Dashboard
+### Modes
 
-1. Enter multiple sentences in the text area (one per line).
-2. Click **Analyze Sentiment** to process the input.
-3. View the results in the following sections:
-   - **Sentiment Results**: A table showing the sentiment and confidence score for each sentence.
-   - **Summary Statistics**: Pie and bar charts visualizing the sentiment distribution.
-   - **Average Confidence per Sentiment**: A bar chart showing the average confidence score for each sentiment.
+1. **Demo Mode**:
+   - Analyze preloaded financial headlines.
+   - Click **Analyze Demo Headlines** to process the sample data.
 
-4. Click **New Chat** to reset the input and start over.
+2. **Live Mode**:
+   - Enter your NewsAPI key and a query (e.g., "Tesla").
+   - Fetch live news headlines and analyze their sentiment.
 
-### Standalone Script
+3. **Manual Mode**:
+   - Paste custom headlines (one per line) into the text area.
+   - Click **Analyze Pasted Headlines** to process the input.
 
-You can also use the `sentiment_analysis.py` script to analyze a single text:
+### Results
 
-```bash
-python sentiment_analysis.py
-```
+- **Sentiment Results**: A table showing the sentiment, confidence score, and timestamp for each headline.
+- **Rolling Sentiment Trends**: A time-series chart showing daily and rolling sentiment averages.
+- **Word Cloud**: A visual representation of the most common words in the analyzed headlines.
+- **Alerts**: Notifications based on rolling sentiment thresholds.
+
+### Download Results
+
+- Export the analyzed data as a CSV file for further analysis.
 
 ## Dependencies
 
@@ -73,6 +90,8 @@ python sentiment_analysis.py
 - Transformers
 - Pandas
 - Plotly
+- WordCloud
+- Requests
 
 Install all dependencies using the `requirements.txt` file:
 
@@ -84,30 +103,32 @@ pip install -r requirements.txt
 
 ### Input
 
+#### Demo Headlines
+
 ```
-I love this product!
-This is the worst experience I've ever had.
-The service was okay, nothing special.
+Tesla shares jump after record quarterly deliveries
+Apple warns iPhone production may be delayed due to supply chain issues
+Amazon beats expectations as cloud revenue grows faster than predicted
+Google faces antitrust scrutiny in the EU, shares fall
+Microsoft invests $10B into new AI research center
+Markets slide as inflation fears resurface
 ```
 
 ### Output
 
 #### Sentiment Results
 
-| Text                                      | Sentiment | Score |
-|-------------------------------------------|-----------|-------|
-| I love this product!                      | POSITIVE  | 0.99  |
-| This is the worst experience I've ever had. | NEGATIVE  | 0.98  |
-| The service was okay, nothing special.    | NEUTRAL   | 0.75  |
+| Date       | Headline                                              | Sentiment | Score |
+|------------|-------------------------------------------------------|-----------|-------|
+| 2025-09-03 | Tesla shares jump after record quarterly deliveries   | Positive  | 0.98  |
+| 2025-09-03 | Apple warns iPhone production may be delayed...       | Negative  | 0.92  |
+| 2025-09-03 | Amazon beats expectations as cloud revenue grows...   | Positive  | 0.95  |
 
-#### Summary Statistics
+#### Visualizations
 
-- **Pie Chart**: Sentiment distribution.
-- **Bar Chart**: Sentiment counts.
-
-#### Average Confidence per Sentiment
-
-- Bar chart showing average confidence scores.
+- **Sentiment Distribution**: Pie chart showing the proportion of positive, neutral, and negative headlines.
+- **Rolling Sentiment Trends**: Line chart showing daily and rolling sentiment averages.
+- **Word Cloud**: A word cloud generated from all analyzed headlines.
 
 ## License
 
@@ -115,8 +136,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- [Hugging Face Transformers](https://huggingface.co/transformers/) for the sentiment analysis pipeline.
+- [Hugging Face Transformers](https://huggingface.co/transformers/) for the FinBERT model.
 - [Streamlit](https://streamlit.io/) for the web app framework.
+- [NewsAPI](https://newsapi.org/) for live news fetching.
 - [Plotly](https://plotly.com/) for data visualization.
 
 ## Author

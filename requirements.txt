@@ -2,3 +2,6 @@ streamlit
 transformers
 pandas
 plotly
+wordcloud
+requests
+torch
